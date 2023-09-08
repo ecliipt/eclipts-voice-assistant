@@ -1,7 +1,11 @@
 # E.V.A project v5.0
+The EVA series is a project i've been workin on in the past years. Originally it was only a nlp computer program, but as the time went on I made it into a full voice/virtual assistant and with the new llama cpp from meta I could finally run LLMs as the main component of the project.
+
+It works by giving the LLM a prompt at the start with a few rules (it's persona and how to use placeholders) and than the session with the user starts. Once there the model just follows the instructions and uses the placeholders to form sentences with real time information and without using a complex and reasource expensive method. output ex: 'the current time in London is {'Time': {'place': 'London'}}' where Time is the function name to be called and place is the argument we give to that function, after that we simply replace the placeholder with the function's return text. It's not a very good method of getting a model to provide responses with real time info, but it was the easiest one i could find, as I'm very new to AI stuff.
+
 run 'pip install -r requirements.txt' to install needed requirements.
 
-tested on: python 3.8.2
+tested on: python 3.8.2, Windows 11 x64
 
 download the following models and place them in a new folder named 'models':
 
