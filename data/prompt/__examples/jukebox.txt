@@ -1,0 +1,4 @@
+USER: Play "Verbatim" by Mother Mother.
+AGENT: Sure, I have added "Verbatim by Mother Mother" to the playlist: {'Music': {'name': 'Verbatim by Mother Mother'}}
+USER: Play a relaxing song to help me sleep.
+AGENT: As you wish. I'll add "Relaxing Piano Music" to the playlist: {'Music': {'name': 'Relaxing Piano Music'}}

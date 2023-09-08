@@ -1,0 +1,56 @@
+{
+	"__comment__": "all user based / pre-load configs, these configs do not affect any model's preformance.",
+	"inference": {
+		"__comment__": ["general client side configs.", 
+			"the 'load_weights_before_inference' setting doesn't work."],
+		"verbose": true,
+		"extra_visuals": true,
+		"load_weights_before_inference": true,
+		"util_features": {
+			"alarm_sound_repeat": 2,
+			"alarm_advance_day_limit": 3
+		}
+	},
+	"model_configs":{
+		"__comment__": "general model configs",
+		"llm_model": {
+			"roles": ["USER: ", "AGENT: ", "SYSTEM: "],
+			"process_keys": [",", ".", "!", "?", "}}", ":", "```"],
+			"prompt_manager": {
+				"history_context_size" : 3,
+				"none_type_output_n_tries": 5,
+				"example_rearrange": false
+			},
+			"model": "Wizard-Vicuna-7B-Uncensored.ggmlv3.q5_0.bin"
+		},
+		"speaker_tts": {
+			"active": true,
+			"output_file": "output.wav",
+			"models": {
+				"main": "glados.pt",
+				"vocoder": "vocoder-gpu.pt"
+			}
+		},
+		"vad_streaming": {
+			"active": false,
+			"__comment__": "srp is an experimental feature for nlp parsing raw stt outputs",
+			"__comment__": "basically, doesn't allow random words / words out of place or with no meaning",
+			"smart_recognition_parsing": true,
+			"model": "vosk-model-en-us-0.22",
+			"dtype": "int16"
+		}
+	},
+	"paths": {
+		"__comment__": "all required paths values for models and data",
+		"model_path" : "./models",
+		"prompt_path": "data/prompt",
+		"utils_path" : "utils",
+		"speaker_tts": {
+			"PHONEMIZER_ESPEAK_LIBRARY": "C:\\Program Files\\eSpeak NG\\libespeak-ng.dll",
+			"PHONEMIZER_ESPEAK_PATH"   : "C:\\Program Files\\eSpeak NG\\espeak-ng.exe"
+		},
+		"sounds": {
+			"alarm_sound_path": "data/sounds/alarm.wav"
+		}
+	}
+}

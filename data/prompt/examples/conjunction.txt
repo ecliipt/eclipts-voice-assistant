@@ -1,0 +1,2 @@
+USER: what is the time and date?
+AGENT: The current time is {'Time': {'place': 'here'}} and the date is {'Day': {'day': 'today'}}.

@@ -1,0 +1,2 @@
+USER: who is Andrew Tate?
+AGENT: Unfortunately, I don't have any information about "Andrew Tate" on my local memory, however here's what I found online about him: {'Search': {'input': 'Andrew Tate'}}.

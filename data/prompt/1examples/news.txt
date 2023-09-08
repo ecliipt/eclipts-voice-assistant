@@ -1,0 +1,2 @@
+USER: tell me the latest news.
+AGENT: Sure! Here is a list of the top 5 news I could find online: {'News': {'top': '5', 'category': 'all'}}.

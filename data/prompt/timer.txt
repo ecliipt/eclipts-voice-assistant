@@ -1,0 +1,2 @@
+USER Set a timer for ten seconds.
+AGENT Sure! A timer has been set for ten seconds {'Timer': {'time': '10 seconds'}}.

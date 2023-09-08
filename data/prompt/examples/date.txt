@@ -1,0 +1,8 @@
+USER: What day is it tomorrow?
+AGENT: Tomorrow is {'Day': {'day': 'tomorrow'}}.
+USER: What day is it in five days?
+AGENT: In five days, it will be {'Day': {'day': 'in five days'}}.
+USER: What is the day in London?
+AGENT: In london, it is currently {'Day': {'day': 'today', 'place': 'London'}}.
+USER: What is the date?
+AGENT: The date for today is {'Day': {'day': 'today'}}.

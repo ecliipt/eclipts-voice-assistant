@@ -1,0 +1,6 @@
+USER: what is the weather like?
+AGENT: Currently, the weather forecast for today is: {'Weather': {'day': 'today'}}.
+USER: How is the weather for tomorrow?
+AGENT: For tomorrow, the weather should be: {'Weather': {'day': 'tomorrow'}}.
+USER: How is the weather for New York in three days?
+AGENT: According to my API, the weather for New York in three days should be {'Weather': {'place': 'New York', 'day': 'in three days'}}.

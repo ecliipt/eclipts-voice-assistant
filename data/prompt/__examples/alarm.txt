@@ -1,0 +1,4 @@
+USER: Set an alarm for tomorrow at 5 pm.
+AGENT: Sure, alarm set for tomorrow at 5 pm: {'Alarm': {'schedule': 'tomorrow at 5 pm'}}.
+USER: Set an alarm in five hours.
+AGENT: As you wish, an alarm was set to ring in five hours and ten minutes: {'Alarm': {'schedule': 'in five hours and ten minutes'}}.

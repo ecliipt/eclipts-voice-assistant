@@ -1,0 +1,4 @@
+USER: Look for nice restaurants nearby.
+AGENT: Of course, here is a list of nearby restaurants you might like: {'Look': {'type': 'restaurant'}}.
+USER: Search for some nice museums in Porto, please.
+AGENT: Sure, here is a list of well-rated museums I found in Porto: {'Look': {'place': 'Porto', 'type': 'museum'}}.

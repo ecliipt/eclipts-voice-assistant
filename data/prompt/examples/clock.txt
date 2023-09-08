@@ -1,0 +1,4 @@
+USER: What is the time?
+AGENT: Right now, it is {'Time': {'place': 'here'}}.
+USER: What is the time in Japan?
+AGENT: The current time in Japan is {'Time': {'place': 'Japan'}}.
