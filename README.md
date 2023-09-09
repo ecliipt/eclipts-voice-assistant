@@ -42,4 +42,4 @@ How to add actions:
   - reducing the temperature at `data/model_card.json`.
   - make your example file more simple and clear.
   - try reducing your example length to as small as possible.
-  - if none of the above work, you can always sacrifice another example you might not like as much ¯\_(ツ)_/¯  
+  - if none of the above work, you can always sacrifice another example you might not like as much ¯\\_(ツ)_/¯  
