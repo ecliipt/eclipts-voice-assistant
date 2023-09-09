@@ -3,12 +3,16 @@ The EVA series is a project i've been workin on in the past years. Originally it
 
 It works by giving the LLM a prompt at the start with a few rules (it's persona and how to use placeholders) and than the session with the user starts. Once there the model just follows the instructions and uses the placeholders to form sentences with real time information and without using a complex and reasource expensive method. output ex: 'the current time in London is {'Time': {'place': 'London'}}' where Time is the function name to be called and place is the argument we give to that function, after that we simply replace the placeholder with the function's return text. It's not a very good method of getting a model to provide responses with real time info, but it was the easiest one i could find, as I'm very new to AI stuff.
 
+### Why use a LLM?
+In order to make the responses more generative and human-like and also give them reason, I concluded that using a large language model, like what we do here, can lead to better natural language understanding of the user's intent, so you don't have to code an assistant with a lot of nlp techniques that might not work accordingly, it provides reasoning to it's answers and can also casually chat with the user while still providing information by placeholders. It is also much easier to try to manipulate the models answers using context history data than it is to train nlp models and code an entire assistant made out of nlp techniques (i've tried to do it before aswell).
+Even though LLMs might not always be 100% reliable with the usage of these placeholders and correct information, I believe the upsides of using one ultrapass the downsides.
+
 ![image (1)](https://github.com/ecliipt/llm_eva/assets/137305099/0bb8dfc0-a87a-4317-b51f-cdf9c7bc3cf0)
 *in this image, we have the replace placeholder feature on, that's why some placeholders are not complete and some not even showed; the placeholder text is replaced by result of the action.*
 
 Premade actions: Time, Date/Day, Weather, News, Alarm, Timer, Music player, Look (radar to look for places in a region), Search
 
-### install
+## install
 
 run 'pip install -r requirements.txt' to install needed requirements.
 
