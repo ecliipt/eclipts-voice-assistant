@@ -7,7 +7,7 @@ It works by giving the LLM a prompt at the start with a few rules (it's persona 
 
 Premade actions: Time, Date/Day, Weather, News, Alarm, Timer, Music player, Look (radar to look for places in a region), Search
 
-# install
+### install
 
 run 'pip install -r requirements.txt' to install needed requirements.
 
@@ -31,7 +31,7 @@ download the following models and place them in a new folder named 'models':
   - https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
   - https://www.mediafire.com/file/yfj085rxn2ggnng/vocoder-gpu.pt/file
 
-# customize
+### customize
 
 How to add actions:
 - go to `data/prompt/examples` and add a new text file with an example of the usage of your function for the model to real. Keep it as short and simple as possible.
@@ -42,4 +42,4 @@ How to add actions:
   - reducing the temperature at `data/model_card.json`.
   - make your example file more simple and clear.
   - try reducing your example length to as small as possible.
-  - if none of the above work, you can always sacrifice another example you might not like as much ¯\\_(ツ)_/¯  
+  - if none of the above work, you can always sacrifice another example you might not like as much ¯\_(ツ)_/¯  
