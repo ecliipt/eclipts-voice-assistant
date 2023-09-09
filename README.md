@@ -31,8 +31,9 @@ download the following models and place them in a new folder named 'models':
   - https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
   - https://www.mediafire.com/file/yfj085rxn2ggnng/vocoder-gpu.pt/file
 
-### customize
-
+<details>
+<summary>### customize</summary>
+<br>
 How to add actions:
 - go to `data/prompt/examples` and add a new text file with an example of the usage of your function for the model to real. Keep it as short and simple as possible.
 - go to `utils/task` and create a new python script with the name that you've set in your example's placeholder.
@@ -43,3 +44,6 @@ How to add actions:
   - make your example file more simple and clear.
   - try reducing your example length to as small as possible.
   - if none of the above work, you can always sacrifice another example you might not like as much ¯\_(ツ)_/¯  
+</details>
+
+
