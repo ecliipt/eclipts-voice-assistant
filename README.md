@@ -32,7 +32,7 @@ download the following models and place them in a new folder named 'models':
   - https://www.mediafire.com/file/yfj085rxn2ggnng/vocoder-gpu.pt/file
 
 <details>
-<summary>customize</summary>
+<summary>How to add actions</summary>
 <br>
 How to add actions:
   
