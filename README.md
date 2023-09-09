@@ -5,6 +5,8 @@ It works by giving the LLM a prompt at the start with a few rules (it's persona 
 
 ![image (1)](https://github.com/ecliipt/llm_eva/assets/137305099/0bb8dfc0-a87a-4317-b51f-cdf9c7bc3cf0)
 
+Premade actions: Time, Date/Day, Weather, News, Alarm, Timer, Music player, Look (radar to look for places in a region), Search
+
 # install
 
 run 'pip install -r requirements.txt' to install needed requirements.
@@ -28,3 +30,16 @@ download the following models and place them in a new folder named 'models':
   - https://www.mediafire.com/file/stfxpjc8zaxih4w/vocoder-cpu-hq.pt/file
   - https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
   - https://www.mediafire.com/file/yfj085rxn2ggnng/vocoder-gpu.pt/file
+
+# customize
+
+How to add actions:
+- go to `data/prompt/examples` and add a new text file with an example of the usage of your function for the model to real. Keep it as short and simple as possible.
+- go to `utils/task` and create a new python script with the name that you've set in your example's placeholder.
+- in your new script, you are free to execute all the code you need, however a main function is required with all the arguments you've set on your example, so the program can call the action, and you must also return some text in that same function, to replace the placeholder with something. (please check already made action scripts for better understanding).
+- there is no need to import your action script in the main script as it already does so auto.
+- next, test if the model is able to use the placeholder accurately, if not so, try:
+  - reducing the temperature at `data/model_card.json`.
+  - make your example file more simple and clear.
+  - try reducing your example length to as small as possible.
+  - if none of the above work, you can always sacrifice another example you might not like as much ¯\_(ツ)_/¯  
