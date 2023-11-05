@@ -52,4 +52,26 @@ How to add actions:
   - if none of the above work, you can always sacrifice another example you might not like as much ¯\_(ツ)_/¯  
 </details>
 
+## Possible errors you might get
+* please remember this repo was only tested in win10 and win11 machines.
 
+<details>
+<summary>pafy youtube-dl not found</summary>
+<br>
+Error: "pafy: youtube-dl not found; you can use the internal backend by setting the environmental variable PAFY_BACKEND to "internal". It is not enabled by default because it is not as well maintained as the youtube-dl backend."
+
+Solution:
+- open pafy's "backend_youtube_dll.py" script at libs
+- replace "import youtube_dl" with "import yt_dlp as youtube_dl"
+- pip install youtube-dl
+</details>
+<details>
+<summary>Could not find module (...)libvlc.dll - vlc error </summary>
+<br>
+Error: "Could not find module 'C:\Users\USERNAME\Desktop\eclipts-voice-assistant\libvlc.dll' (or one of its dependencies). Try using the full path with constructor syntax."
+
+Solution:
+- install the vlc program from https://www.videolan.org/
+- in the installer, make sure to copy the destination folder path (ex: C:\Program Files\VideoLAN\VLC) and replace the default path in "os.add_dll_directory(r'C:\Program Files\VideoLAN\VLC')" at utils/task/Music.py with your path.
+- NOTE: if your python is 64bits, your vlc must be 64bits aswell.
+</details>
