@@ -86,7 +86,7 @@ Solution:
 <summary>Conversation Example (without placeholder replacement active, raw text)</summary>
 <br>
   > 21:23:40 | USER: hey
-
+  
   > 21:23:46 | AGENT:  Hey there! What can I help you with today?
   
   > 21:23:53 | USER: I'm not sure what to wear for tomorrow, could you check the weather for me please
