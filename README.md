@@ -25,7 +25,7 @@ download the following models and place them in a new folder named 'models':
   main llama : (choose only 1 of the following) 
   - GGMLV3 https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGML/tree/main
   - GGUF https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGUF/tree/main
-  *Note: the gguf model usually preforms faster and a bit more reliable*
+  - *Note: the gguf model usually preforms faster and a bit more reliable*
   
   wakeword   : https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
   
