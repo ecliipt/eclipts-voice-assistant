@@ -27,7 +27,9 @@ download the following models and place them in a new folder named 'models':
   - GGUF https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGUF/tree/main
   - *Note: the gguf model usually preforms faster and a bit more reliable*
   
-  wakeword   : https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
+  wakeword   : 
+  - https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
+  - *If you want to make your own wake word, follow https://picovoice.ai/blog/console-tutorial-custom-wake-word/*
   
   vosk models:
   - https://alphacephei.com/vosk/models/vosk-model-en-us-0.22.zip
