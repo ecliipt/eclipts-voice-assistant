@@ -20,7 +20,7 @@ tested on: python 3.8.2, Windows 11 x64
 
 download the following models and place them in a new folder named 'models':
 
-  (for the llama choose the q5_0 version)
+  (for the llama i chose the q5_0 version)
 
   main llama : (choose only 1 of the following) 
   - GGMLV3 https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGML/tree/main
