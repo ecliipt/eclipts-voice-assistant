@@ -22,20 +22,20 @@ download the following models and place them in a new folder named 'models':
 
   (for the llama i chose the q5_0 version)
 
-  main llama : (choose only 1 of the following) 
+  **main llama model** : (choose only 1 of the following) 
   - GGMLV3 https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGML/tree/main
   - GGUF https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGUF/tree/main
   - *Note: the gguf model usually preforms faster and a bit more reliable*
   
-  wakeword   : 
+  **wakeword**   : 
   - https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
   - *If you want to make your own wake word, follow https://picovoice.ai/blog/console-tutorial-custom-wake-word/*
   
-  vosk models:
+  **vosk models**:
   - https://alphacephei.com/vosk/models/vosk-model-en-us-0.22.zip
   - https://alphacephei.com/vosk/models/vosk-model-spk-0.4.zip
   
-  tts modes:
+  **tts modes**:
   - https://www.mediafire.com/file/j9yktrcg687tmdr/glados.pt/file
   - https://www.mediafire.com/file/stfxpjc8zaxih4w/vocoder-cpu-hq.pt/file
   - https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
