@@ -85,31 +85,40 @@ Solution:
 <details>
 <summary>Conversation Example (without placeholder replacement active, raw text)</summary>
 <br>
-```21:23:40 | USER: hey
-21:23:46 | AGENT:  Hey there! What can I help you with today?
+  > 21:23:40 | USER: hey
 
-21:23:53 | USER: I'm not sure what to wear for tomorrow, could you check the weather for me please
-21:24:17 | AGENT:  Sure thing! The current weather forecast for tomorrow is: {'Weather': {'day': 'tomorrow'}}. Based on that information, it looks like a light jacket or sweater would be appropriate attire for tomorrow.
-
-21:24:46 | USER: yes you're right thanks
-21:24:56 | AGENT:  You're welcome! Is there anything else I can help you with today?
-
-21:25:05 | USER: actually yes could you set me a schedule for in ten minutes
-21:25:21 | AGENT:  Absolutely! Here is an alarm that will ring in ten minutes: {'Alarm': {'schedule': 'in ten minutes'}}.
-
-21:25:35 | USER: thank you could you also tell me the time and date
-21:26:01 | AGENT:  Is there anything else I can help you with today?
-
-21:26:30 | USER: could you tell me the time and date
-21:26:48 | AGENT:  Sure! The current time is {'Time': {'place': 'here'}} and the date is {'Day': {'day': 'today'}}.
-
-21:27:14 | USER: thanks
-21:27:35 | AGENT:  You're welcome!
-
-21:28:13 | USER: listen i'm here with my friends and we'd like to hear some good music what do you think we should liste
-n to
-21:29:00 | AGENT:  Great, I can definitely help you out there! Based on your preferences, I recommend checking out the following playlist: {'Play': {'name': 'Good Music for a Party'}}.
-
-21:29:29 | USER: that was some good music indeed thanks
-21:30:11 | AGENT:  You're welcome!```
+  > 21:23:46 | AGENT:  Hey there! What can I help you with today?
+  
+  > 21:23:53 | USER: I'm not sure what to wear for tomorrow, could you check the weather for me please
+  
+  > 21:24:17 | AGENT:  Sure thing! The current weather forecast for tomorrow is: {'Weather': {'day': 'tomorrow'}}. Based on that information, it looks like a light jacket or sweater would be appropriate attire for tomorrow.
+  
+  > 21:24:46 | USER: yes you're right thanks
+  
+  > 21:24:56 | AGENT:  You're welcome! Is there anything else I can help you with today?
+  
+  > 21:25:05 | USER: actually yes could you set me a schedule for in ten minutes
+  
+  > 21:25:21 | AGENT:  Absolutely! Here is an alarm that will ring in ten minutes: {'Alarm': {'schedule': 'in ten minutes'}}.
+  
+  > 21:25:35 | USER: thank you could you also tell me the time and date
+  
+  > 21:26:01 | AGENT:  Is there anything else I can help you with today?
+  
+  > 21:26:30 | USER: could you tell me the time and date
+  
+  > 21:26:48 | AGENT:  Sure! The current time is {'Time': {'place': 'here'}} and the date is {'Day': {'day': 'today'}}.
+  
+  > 21:27:14 | USER: thanks
+  
+  > 21:27:35 | AGENT:  You're welcome!
+  
+  > 21:28:13 | USER: listen i'm here with my friends and we'd like to hear some good music what do you think we should liste
+  n to
+  
+  > 21:29:00 | AGENT:  Great, I can definitely help you out there! Based on your preferences, I recommend checking out the following playlist: {'Play': {'name': 'Good Music for a Party'}}.
+  
+  > 21:29:29 | USER: that was some good music indeed thanks
+  
+  > 21:30:11 | AGENT:  You're welcome!
 </details>
