@@ -29,7 +29,7 @@ download the following models and place them in a new folder named 'models':
   
   **wakeword**   : 
   - https://www.mediafire.com/file/o7xvgrvvvor2twr/Hey-Eva_en_windows_v2_2_0.ppn/file
-  - <*If you want to make your own wake word, follow https://picovoice.ai/blog/console-tutorial-custom-wake-word/*>
+  - < *If you want to make your own wake word, follow https://picovoice.ai/blog/console-tutorial-custom-wake-word/* >
   
   **vosk models**:
   - https://alphacephei.com/vosk/models/vosk-model-en-us-0.22.zip
