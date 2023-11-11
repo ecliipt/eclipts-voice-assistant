@@ -4,22 +4,28 @@ import inspect
 import json
 import copy
 import utils.engines._importdir as importdir
+import utils.logging as _logging
 import time
+import sys
 import re
 import os
 
 old_time = time.time()
 
-def reload(path='utils', items=[]):
+def reload(path='utils', items=[], unloaded=[]):
     importdir.do(path, globals())
     for dirpath, dirnames, filenames in os.walk(path):
         for filename in filenames:
             if filename.endswith('.py') and not filename.startswith('_'):
-                print(filename)
                 try: 
                     importdir.do(dirpath, globals())
                     items.append(filename.replace('.py', ''))
-                except Exception as e: print(e)
+                except Exception as e: 
+                    _logging.fail(f"Failed to load libraries from {filename}; {e}", wait=False)
+                    unloaded.append(filename)
+                    #exit(0)
+    _logging.fail(f"Unable to load {len(unloaded)} modules. Please check for updates.\nIf the program was not able to load a certain module form a utils folder,\nthe program will FAIL to load any of the scripts inside that folder/dir!",
+        wait=False) if len(unloaded) >= 1 else None
     return items
 
 #####################################################################################
@@ -50,24 +56,25 @@ completion_configs = LLMconfigs["completion_configs"]
 #model 
 
 try: llm = Llama(model_path=model_path, **internal_model_configs)
-except AttributeError as llama_model_unreachable: logging.critical(
+except AttributeError as llama_model_unreachable: _logging.critical(
     'main ggml model file is out of reach or does not exist!', kill=True)
-except Exception as llama_model_load_fail: logging.critical(llama_model_load_fail, kill=True)
+except Exception as llama_model_load_fail: _logging.critical(llama_model_load_fail, kill=True)
 
 util_modules = reload() # it wont "re"-load shit, i just liked the name :P
 task_modules = [mod for mod in util_modules if mod[0].isupper()]
-logging.info(f'loaded {len(task_modules)} task modules from {len(util_modules)} total imported utils.', wait=False)
+logging.info(f'Loaded {len(task_modules)} task modules from {len(util_modules)} total imported utils.', wait=False)
 
 import utils.logging as logging
 #import utils.engines._listen as listen
 
 system_msg = []
 
-def prepare(_input, n=0):
+def prepare(_input, _goal, n=0):
+    logging.info(f'Reading prompt & examples from {sys.getsizeof("".join(prompt))} bites of training data.', wait=False)
     _input = 'USER: '+_input+'. AGENT: '
     old_time_prepare = time.time()
     output_text=[]
-    while '}}' not in ''.join(output_text):
+    while _goal not in ''.join(output_text):
         output_text=[]
         stream = llm(
             " ".join(prompt)+_input,
@@ -84,15 +91,17 @@ def prepare(_input, n=0):
         n+=1
         print(n, "".join(output_text))
     eval_time=(time.time() - old_time_prepare) * 1000
-    logging.info(f'took {eval_time} ms and {n} tries to get acceptable placeholder result.', wait=False)
-    if eval_time >= 200000: logging.warn('took more than expected to prepare. Check VRAM & cpu memory for better preformance!', wait=False)
-    if n >= 7: logging.warn('too many tries to get acceptable placeholder result!\nCheck model weights and prompt length!', wait=False)
+    logging.info(f'Took {eval_time} ms and {n} tries to get acceptable placeholder result.', wait=False)
+    if eval_time >= 200000: logging.warn('Took more than expected to prepare. Check VRAM & cpu memory for better preformance!', wait=False)
+    if n >= 7: logging.warn('Too many tries to get acceptable placeholder result!\nCheck model weights and prompt length!', wait=False)
+    return eval_time, n, _goal
 
 def completion_manager(config_name, new_value):
     completion_configs[config_name] = float(new_value)
     return config_name, completion_configs[config_name]
 
 def kill(value=0):
+    logging.debug('Closing thread sessions...')
     for mod in util_modules:
         try: 
             function = globals()[mod].kill_threads
@@ -114,7 +123,7 @@ def key_strip(output_text, sentence_keys):
         if key in output_text[-1]:
             output_complete.append(text)
             if any(mod in text for mod in task_modules) and '}}' in text:
-                text = text.replace('"', "'")
+                text = output_format.replace_for_punct_error(input_string=text)
                 function_name = None
                 try: 
                     function_name, args = placeholder.Match(text)
@@ -135,7 +144,7 @@ def key_strip(output_text, sentence_keys):
                     system_msg.append(error_output)
                     logging.sys(error_output, exception=placeholder_general_fail, fail=True)
                     pass
-            speaker.tts(text)
+            #speaker.tts(text)
             output_text = []
             return []
     return output_text
@@ -160,9 +169,9 @@ prompt, n_examples = prompt_manager.load_prompt(_path["prompt_path"])
 output_text     = []
 output_complete = []
 
-prepare('what is the time') if _inference['load_weights_before_inference'] else None
+prepare('what is the time', _goal='}}') if _inference['load_weights_before_inference'] else None
 
-logging.info(f'took {str((time.time() - old_time) * 1000)} ms to load (total).', wait=False)
+logging.info(f'Took {str((time.time() - old_time) * 1000)} ms to load (total).', wait=False)
 
 def vad_listen():
     try: 
@@ -179,6 +188,7 @@ def vad_listen():
     return None
 
 while True:
+    logging.Flush()
     query = input(datetime.now().strftime("\n%H:%M:%S | "
         ) + roles[0]) if not _model_configs['vad_streaming']['active'] else vad_listen()
     if query == None: continue
@@ -237,7 +247,7 @@ while True:
             output_text = key_strip(output_text, process_keys)
         if "".join(output_complete) != "":
             break
-        logging.debug('None type output encountered! Retrying until acceptable response...')
+        #logging.debug('None type output encountered! Retrying until acceptable response...')
     prompt.append(_input+"".join(output_complete))
     prompt=prompt_manager.remove_history(prompt, _model_configs['llm_model']['prompt_manager']['history_context_size']+1, n_examples)
     output_complete = []
