@@ -67,7 +67,7 @@ Error: "pafy: youtube-dl not found; you can use the internal backend by setting 
 
 Solution:
 - open pafy's "backend_youtube_dll.py" script at libs
-- replace "import youtube_dl" with "import yt_dlp as youtube_dl"
+- replace ```import youtube_dl``` with ```import yt_dlp as youtube_dl```
 - pip install youtube-dl
 </details>
 <details>
@@ -77,8 +77,21 @@ Error: "Could not find module 'C:\Users\USERNAME\Desktop\eclipts-voice-assistant
 
 Solution:
 - install the vlc program from https://www.videolan.org/
-- in the installer, make sure to copy the destination folder path (ex: C:\Program Files\VideoLAN\VLC) and replace the default path in "os.add_dll_directory(r'C:\Program Files\VideoLAN\VLC')" at utils/task/Music.py with your path.
+- in the installer, make sure to copy the destination folder path (ex: C:\Program Files\VideoLAN\VLC) and replace the default path in ```os.add_dll_directory(r'C:\Program Files\VideoLAN\VLC')``` at utils/task/Music.py with your path.
 - NOTE: if your python is 64bits, your vlc must be 64bits aswell.
+</details>
+<details>
+<summary>yt-dlp & youtube-dl errors </summary>
+<br>
+*To fix any pafy backend_youtube_dl issues with dislike and like counts, simply comment those lines*
+
+Error: "yt-dlp TypeError: unsupported operand type(s) for -: 'NoneType' and 'float'"
+
+Solution:
+- reinstall an older package of yt_dlp using ```pip install yt_dlp==2022.03.08```
+- in (...)/yt_dlp/extractor/youtube.py b/yt_dlp/extractor/youtube.py
+  - comment/remove this line : ``` 'uploader_id': self._search_regex(r'/(?:channel|user)/([^/?&#]+)', owner_profile_url, 'uploader id') if owner_profile_url else None, ```
+  - and replace it with this : ``` 'uploader_id': self._search_regex(r'/(?:channel/|user/|(?=@))([^/?&#]+)', owner_profile_url, 'uploader id', default=None), ```
 </details>
 
 ## Examples
