@@ -116,13 +116,14 @@ def reset_prompt(value=1):
     return prompt
 
 
-def key_strip(output_text, sentence_keys):
+def key_strip(output_text, sentence_keys, placeholder_call=False):
     text = "".join(output_text)
     if '{' in text and not '}' in text: return output_text
     for key in sentence_keys:
         if key in output_text[-1]:
             output_complete.append(text)
             if any(mod in text for mod in task_modules) and '}}' in text:
+                placeholder_call = True
                 text = output_format.replace_for_punct_error(input_string=text)
                 function_name = None
                 try: 
@@ -144,7 +145,7 @@ def key_strip(output_text, sentence_keys):
                     system_msg.append(error_output)
                     logging.sys(error_output, exception=placeholder_general_fail, fail=True)
                     pass
-            #speaker.tts(text)
+            speaker.tts(text, placeholder=placeholder_call)
             output_text = []
             return []
     return output_text
