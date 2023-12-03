@@ -54,47 +54,48 @@ def big_text_manager(text):
     text = [q.strip() for q in text if q.strip()]
     return text
 
-def tts(text):
+def tts(text, placeholder=False):
     if not _active_: return None
     global queue_n
     #print('<s>'+text+'</s>')
     if len(text) >= 150:
         for i in big_text_manager(text):
             queue[queue_n] = i
-            onWaitThread = Thread(target=speech_wait, args=(queue_n,))
+            onWaitThread = Thread(target=speech_wait, args=(queue_n, placeholder))
             onWaitThread.start()
             queue_n+=1
     else:
         queue[queue_n] = text.replace('\n', '')
-        onWaitThread = Thread(target=speech_wait, args=(queue_n,))
+        onWaitThread = Thread(target=speech_wait, args=(queue_n, placeholder))
         onWaitThread.start()
         queue_n+=1
 
-def speech_wait(numb):
+def speech_wait(numb, placeholder):
     while True:
         if numb in queue and list(queue.keys())[0] == numb:
-            synthesize = Thread(target=synthesizer, args=(queue[numb], numb))
+            synthesize = Thread(target=synthesizer, args=(queue[numb], numb, placeholder))
             synthesize.start()
             break
 
+import random
 def playsound(name, _dir='./sounds/'):
     sound = mixer.Sound(_dir+name)
     sound.play()
     return sound.get_length()+0.1
 
 
-def synthesizer(text, numb):
+def synthesizer(text, numb, placeholder=False):
     x = prepare_text(text).to('cpu')
 
     with torch.no_grad():
 
         # Generate generic TTS-output
-        old_time = time.time()
+        #old_time = time.time()
         tts_output = glados.generate_jit(x)
         #print("Forward Tacotron took " + str((time.time() - old_time) * 1000) + "ms")
 
         # Use HiFiGAN as vocoder to make output sound like GLaDOS
-        old_time = time.time()
+        #old_time = time.time()
         mel = tts_output['mel_post'].to(device)
         audio = vocoder(mel)
         #print("HiFiGAN took " + str((time.time() - old_time) * 1000) + "ms")
@@ -104,8 +105,10 @@ def synthesizer(text, numb):
         audio = audio * 32768.0
         audio = audio.cpu().numpy().astype('int16')
         output_file = (configs['output_file'])
+
+        rate = 23550 if placeholder else 22050
         
-        write(output_file, 22050, audio)
+        write(output_file, rate, audio) #22050
 
         #print(numb, queue, queue_n)
 
