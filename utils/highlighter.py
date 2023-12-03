@@ -2,6 +2,18 @@ import sys
 from colorama import Fore, Style, init
 init()
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    ITALIC = '\x1B[3m'
+
 def error(output_text, visuals=True):
     if not visuals: return None
     #output_text = "".join(output_text)
@@ -19,7 +31,7 @@ def Replace(output_text, replacement, visuals=True):
     sys.stdout.write("\b" * int(len(output_text)+1))
     sys.stdout.write(" " * len(output_text))
     sys.stdout.write("\b" * len(output_text))
-    print(f"{Fore.WHITE}{replacement}{Fore.RESET}"+' '*(len(output_text)-len(replacement)+2), end="", flush=True)
+    print(f"{Fore.WHITE}{bcolors.ITALIC}{replacement}{bcolors.ENDC}{Fore.RESET}"+' '*(len(output_text)-len(replacement)+2), end="", flush=True)
     sys.stdout.write("\b" * (len(output_text)-len(replacement)+2))
 
 if __name__ == '__main__':
